@@ -1,8 +1,9 @@
-const JSX = (
-    <div>
-        <br/>
-        <hr/>
-    </div>
-);
+const MyComponent = function ()
+{
+    return (
+        <div>some text</div>
+    );
+};
 
-ReactDOM.render(JSX, document.getElementById('challenge-node'));
+ReactDOM.render(<MyComponent />, document.getElementById('challenge-node'));
+
