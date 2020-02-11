@@ -1,26 +1,28 @@
-const CurrentDate = (props) => {
+const List = (props) => {
+  return <p>{props.tasks.join(", ")}</p>
+};
+
+class ToDo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
     return (
       <div>
-        <p>The current date is: {props.date}</p>
+        <h1>To Do Lists</h1>
+        <h2>Today</h2>
+        { /* change code below this line */}
+        <List tasks={['clean home', 'buy potatoes']} />
+        <h2>Tomorrow</h2>
+        <List tasks={['read book', 'visit friend', 'bake pizza']} />
+        { /* change code above this line */}
       </div>
     );
-  };
-   
-  class Calendar extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-    render() {
-      return (
-        <div>
-          <h3>What date is it?</h3>
-          <CurrentDate date={Date()} />
-        </div>
-      );
-    }
-  };
-  
- 
-ReactDOM.render(<Calendar/>, document.getElementById('challenge-node'))
+  }
+};
+
+
+
+ReactDOM.render(<ToDo />, document.getElementById('challenge-node'))
 
 
