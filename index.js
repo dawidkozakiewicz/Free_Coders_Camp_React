@@ -1,41 +1,26 @@
-class ReturnTempPassword extends React.Component {
+class CampSite extends React.Component {
   constructor(props) {
     super(props);
-
   }
   render() {
     return (
-        <div>
-            <p>Your temporary password is: <strong>{this.props.tempPassword}</strong></p>
-        </div>
+      <div>
+        <Camper />
+      </div>
     );
   }
+}
+
+const Camper = props => {
+  return (
+    <div>
+      <p>{props.name}</p>
+    </div>
+  );
+};
+Camper.defaultProps = { name: "CamperBot" };
+Camper.propTypes = {
+  name: PropTypes.string.isRequired
 };
 
-class ResetPassword extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
-  render() {
-    return (
-        <div>
-          <h2>Reset Password</h2>
-          <h3>We've generated a new temporary password for you.</h3>
-          <h3>Please reset this password from your account settings ASAP.</h3>
-            <ReturnTempPassword tempPassword={'abcdefgh'} />
-        </div>
-    );
-  }
-};
-
-
-
-
-
-
-
-
-ReactDOM.render(<ResetPassword />, document.getElementById('challenge-node'))
-
-
+ReactDOM.render(<CampSite />, document.getElementById("challenge-node"));
