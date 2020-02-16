@@ -1,25 +1,39 @@
-class ControlledInput extends React.Component {
+class MyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ""
+      input: "",
+      submit: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     this.setState({
       input: event.target.value
     });
   }
+
+  handleSubmit() {
+    event.preventDefault();
+    this.setState({
+      submit: this.state.input
+    });
+  }
+
   render() {
     return (
       <div>
-        <input value={this.state.input} onChange={this.handleChange} />
-        <h4>Controlled Input:</h4>
-        <p>{this.state.input}</p>
+        <form onSubmit={this.handleSubmit}>
+          <input value={this.state.input} onChange={this.handleChange} />
+          <button type="submit" onClick={this.handleSubmit}>
+            Submit!
+          </button>
+        </form>
+        <h1>{this.state.submit}</h1>
       </div>
     );
   }
 }
 
-ReactDOM.render(<ControlledInput />, document.getElementById("challenge-node"));
+ReactDOM.render(<MyForm />, document.getElementById("challenge-node"));
