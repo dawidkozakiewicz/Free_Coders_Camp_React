@@ -5,22 +5,25 @@ class CampSite extends React.Component {
   render() {
     return (
       <div>
-        <Camper />
+        <Camper/>
       </div>
     );
   }
-}
-
-const Camper = props => {
+};
+// change code below this line
+ 
+const Camper = (props) => {
   return (
     <div>
       <p>{props.name}</p>
     </div>
-  );
+  )
 };
-Camper.defaultProps = { name: "CamperBot" };
-Camper.propTypes = {
-  name: PropTypes.string.isRequired
-};
+// change code below this line
+Camper.defaultProps = { name: 'CamperBot'}
+// Camper.prop-types = {
+//   name: PropTypes.string.isRequired
+// };
+
 
 ReactDOM.render(<CampSite />, document.getElementById("challenge-node"));
