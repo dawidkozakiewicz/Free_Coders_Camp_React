@@ -1,10 +1,9 @@
-class StatefulComponent extends React.Component {
+class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Dawid'
+      name: 'freeCodeCamp'
     }
- 
   }
   render() {
     return (
@@ -17,4 +16,4 @@ class StatefulComponent extends React.Component {
 
 
 
-ReactDOM.render(<StatefulComponent />, document.getElementById("challenge-node"));
+ReactDOM.render(<MyComponent />, document.getElementById("challenge-node"));
