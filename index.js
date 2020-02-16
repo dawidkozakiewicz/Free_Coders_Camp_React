@@ -2,23 +2,23 @@ class MyComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'freeCodeCamp'
-    }
+      text: "Hello"
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      text: "You clicked!"
+    });
   }
   render() {
-    // change code below this line
-const name = this.state.name
-    // change code above this line
     return (
       <div>
-      <h1>{name}</h1>
+        <button onClick={this.handleClick}>Click Me</button>
+        <h1>{this.state.text}</h1>
       </div>
     );
   }
-};
-
-
-
-
+}
 
 ReactDOM.render(<MyComponent />, document.getElementById("challenge-node"));
