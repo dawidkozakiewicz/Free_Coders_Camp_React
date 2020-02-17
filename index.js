@@ -1,39 +1,30 @@
-class MyForm extends React.Component {
+class MyApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: "",
-      submit: ""
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+      name: 'CamperBot'
+    }
   }
-  handleChange(event) {
-    this.setState({
-      input: event.target.value
-    });
-  }
-
-  handleSubmit() {
-    event.preventDefault();
-    this.setState({
-      submit: this.state.input
-    });
-  }
-
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <input value={this.state.input} onChange={this.handleChange} />
-          <button type="submit" onClick={this.handleSubmit}>
-            Submit!
-          </button>
-        </form>
-        <h1>{this.state.submit}</h1>
-      </div>
+       <div>
+         <Navbar name={this.state.name}/>
+       </div>
     );
   }
-}
+};
 
-ReactDOM.render(<MyForm />, document.getElementById("challenge-node"));
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+    <div>
+      <h1>Hello, my name is: {this.props.name} </h1>
+    </div>
+    );
+  }
+};
+
+ReactDOM.render(<MyApp />, document.getElementById("challenge-node"));
