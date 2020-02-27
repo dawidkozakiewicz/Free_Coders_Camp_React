@@ -1,51 +1,35 @@
-const inputStyle = {
-  width: 235,
-  margin: 5
-};
+class Results extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return <h1>{this.props.fiftyFifty ? "You Win!" : "You Lose!"}</h1>;
+  }
+}
 
-class CheckUserAge extends React.Component {
+class GameOfChance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userAge: "",
-      input: ""
+      counter: 1
     };
-    this.submit = this.submit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
-  handleChange(e) {
+  handleClick() {
     this.setState({
-      input: e.target.value,
-      userAge: ""
+      counter: this.state.counter + 1
     });
   }
-  submit() {
-    this.setState(state => ({
-      userAge: state.input
-    }));
-  }
   render() {
-    const buttonOne = <button onClick={this.submit}>Submit</button>;
-    const buttonTwo = <button>You May Enter</button>;
-    const buttonThree = <button>You Shall Not Pass</button>;
+    const expression = Math.random() >= 0.5;
     return (
       <div>
-        <h3>Enter Your Age to Continue</h3>
-        <input
-          style={inputStyle}
-          type="number"
-          value={this.state.input}
-          onChange={this.handleChange}
-        />
-        <br />
-        {this.state.userAge === ""
-          ? buttonOne
-          : this.state.userAge >= 18
-          ? buttonTwo
-          : buttonThree}
+        <button onClick={this.handleClick}>Play Again</button>
+        <Results fiftyFifty={expression} />
+        <p>{"Turn: " + this.state.counter}</p>
       </div>
     );
   }
 }
 
-ReactDOM.render(<CheckUserAge />, document.getElementById("challenge-node"));
+ReactDOM.render(<GameOfChance />, document.getElementById("challenge-node"));
