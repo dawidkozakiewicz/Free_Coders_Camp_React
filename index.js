@@ -1,46 +1,25 @@
-const textAreaStyles = {
-  width: 235,
-  margin: 5
+const frontEndFrameworks = [
+  'React',
+  'Angular',
+  'Ember',
+  'Knockout',
+  'Backbone',
+  'Vue'
+];
+ 
+function Frameworks() {
+ const renderFrameworks = frontEndFrameworks.map((item) =>
+  <li key={Math.random()}>{item}</li>
+);
+  return (
+    <div>
+      <h1>Popular Front End JavaScript Frameworks</h1>
+      <ul>
+        {renderFrameworks}
+      </ul>
+    </div>
+  );
 };
 
-class MyToDoList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userInput: "",
-      toDoList: []
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleSubmit() {
-    const itemsArray = this.state.userInput.split(",");
-    this.setState({
-      toDoList: itemsArray
-    });
-  }
-  handleChange(e) {
-    this.setState({
-      userInput: e.target.value
-    });
-  }
-  render() {
-    const items = this.state.toDoList.map(i => <li>{i}</li>);
-    return (
-      <div>
-        <textarea
-          onChange={this.handleChange}
-          value={this.state.userInput}
-          style={textAreaStyles}
-          placeholder="Separate Items With Commas"
-        />
-        <br />
-        <button onClick={this.handleSubmit}>Create List</button>
-        <h1>My "To Do" List:</h1>
-        <ul>{items}</ul>
-      </div>
-    );
-  }
-}
 
-ReactDOM.render(<MyToDoList />, document.getElementById("challenge-node"));
+ReactDOM.render(<Frameworks />, document.getElementById("challenge-node"));
