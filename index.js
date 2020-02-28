@@ -1,25 +1,48 @@
-const frontEndFrameworks = [
-  'React',
-  'Angular',
-  'Ember',
-  'Knockout',
-  'Backbone',
-  'Vue'
-];
- 
-function Frameworks() {
- const renderFrameworks = frontEndFrameworks.map((item) =>
-  <li key={Math.random()}>{item}</li>
-);
-  return (
-    <div>
-      <h1>Popular Front End JavaScript Frameworks</h1>
-      <ul>
-        {renderFrameworks}
-      </ul>
-    </div>
-  );
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          username: 'Jeff',
+          online: true
+        },
+        {
+          username: 'Alan',
+          online: false
+        },
+        {
+          username: 'Mary',
+          online: true
+        },
+        {
+          username: 'Jim',
+          online: false
+        },
+        {
+          username: 'Sara',
+          online: true
+        },
+        {
+          username: 'Laura',
+          online: true
+        }
+      ]
+    }
+  }
+  render() {
+    const usersOnline = this.state.users.filter(user => user.online === true)
+    const renderOnline = usersOnline.map(user => <li key={Math.random()}>{user.username}</li>)
+    return (
+       <div>
+         <h1>Current Online Users:</h1>
+         <ul>
+           {renderOnline}
+         </ul>
+       </div>
+    );
+  }
 };
 
 
-ReactDOM.render(<Frameworks />, document.getElementById("challenge-node"));
+ReactDOM.render(<MyComponent />, document.getElementById("challenge-node"));
