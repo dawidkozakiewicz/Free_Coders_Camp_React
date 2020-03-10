@@ -12,10 +12,30 @@ const complex_JSX_element = (
   </div>
 );
 
-const Stateless_functional_component= () => {
+const Stateless_functional_component = () => {
   return <div>some text</div>;
 };
 
+class React_component extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello React!</h1>
+      </div>
+    );
+  }
+}
+
 ReactDOM.render(simple_JSX_element, document.getElementById("simple"));
 ReactDOM.render(complex_JSX_element, document.getElementById("complex"));
-ReactDOM.render(<Stateless_functional_component />, document.getElementById("stateless"));
+ReactDOM.render(
+  <Stateless_functional_component />,
+  document.getElementById("stateless")
+);
+ReactDOM.render(
+  <React_component />,
+  document.getElementById("react_component")
+);
